@@ -7,4 +7,10 @@
     <!-- Folder where production build objects will be placed -->
     <PublishAssetsDirectory>$(MSBuildProjectDirectory)\dist\pixelmaker.client\</PublishAssetsDirectory>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\shared\components\" />
+    <Folder Include="src\shared\models\" />
+    <Folder Include="src\shared\interfaces\" />
+    <Folder Include="src\shared\services\" />
+  </ItemGroup>
 </Project>
