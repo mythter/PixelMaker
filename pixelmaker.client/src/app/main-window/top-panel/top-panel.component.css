@@ -1,0 +1,9 @@
+:host {
+  height: 110px;
+  min-height: 110px;
+  width: 100%;
+  background: #ffffffc0;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
