@@ -8,6 +8,7 @@
     <PublishAssetsDirectory>$(MSBuildProjectDirectory)\dist\pixelmaker.client\</PublishAssetsDirectory>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="src\assets\backgrounds\" />
     <Folder Include="src\shared\components\" />
     <Folder Include="src\shared\models\" />
     <Folder Include="src\shared\interfaces\" />
