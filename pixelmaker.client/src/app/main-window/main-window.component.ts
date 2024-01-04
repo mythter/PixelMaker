@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MouseService } from '../../shared/services/mouse.service';
 
 @Component({
@@ -6,8 +6,7 @@ import { MouseService } from '../../shared/services/mouse.service';
   templateUrl: './main-window.component.html',
   styleUrl: './main-window.component.css'
 })
-export class MainWindowComponent implements OnInit {
-
+export class MainWindowComponent {
   @HostListener('mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
     this.mouseService.onMove(e);
@@ -15,9 +14,5 @@ export class MainWindowComponent implements OnInit {
 
   constructor(private mouseService: MouseService) {
 
-  }
-
-  ngOnInit(): void {
-   
   }
 }
