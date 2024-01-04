@@ -62,6 +62,17 @@ export class DisplayComponent {
       if (!this.blocks.some(bl => bl.x == b.x && bl.y == b.y)) {
         this.blocks.push(b);
       }
-    })
+    });
+
+    cellsService.placeCell$.subscribe(o => {
+      if (this.blocks.some(b => b.x == o.newPos.x && b.y == o.newPos.y)) {
+        o.cell.x = o.oldPos.x;
+        o.cell.y = o.oldPos.y;
+      }
+      else {
+        o.cell.x = o.newPos.x;
+        o.cell.y = o.newPos.y;
+      }
+    });
   }
 }
