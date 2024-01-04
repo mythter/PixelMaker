@@ -8,9 +8,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: url("https://i.ytimg.com/vi/VjSgDrjyP7M/maxresdefault.jpg") no-repeat;
-  /*opacity: 0.5;*/
-  /*background: url("https://i.ytimg.com/vi/D9RcPGWrGV8/maxresdefault.jpg") no-repeat;*/
 }
 
   .main .tools {
@@ -21,27 +18,88 @@
     position: absolute;
     z-index: 1;
     pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
 
-  .main .left-tools {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 180px;
-    pointer-events: auto;
-  }
+    .main .tools .button {
+      background: #cecece;
+      border-radius: 10px;
+    }
 
-.left-tools .play-btn {
+.top-tools-panel {
+  /*    height: 110px;
+    min-height: 110px;*/
+  height: fit-content;
+  width: 100%;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  margin-bottom: 5px;
   display: flex;
-  justify-content: center;
+  gap: 30px;
   align-items: center;
+  padding: 15px;
 }
 
-  .left-tools .play-btn svg {
-    width: 140px;
-    height: 140px;
-    pointer-events: none;
+  .top-tools-panel .button {
+    width: 75px;
+    height: 75px;
+    min-width: 75px;
+    min-height: 75px;
   }
+
+  .top-tools-panel .recently-used {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+
+.left-tools {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 200px;
+  pointer-events: auto;
+}
+
+  .left-tools .left-tools-panel {
+    height: 100%;
+    width: inherit;
+    border-left: 0;
+    border-radius: 0 10px 10px 0;
+    display: grid;
+    justify-content: center;
+    gap: 10px;
+    grid-template-columns: 75px 75px;
+    grid-template-rows: repeat(4, 75px);
+    padding: 15px;
+  }
+
+    .left-tools .left-tools-panel .button {
+      width: 100%;
+      height: 75px;
+    }
+
+    .left-tools .left-tools-panel .long {
+      grid-column: span 2;
+    }
+
+  .left-tools .play-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+    .left-tools .play-btn svg {
+      width: 140px;
+      height: 140px;
+      pointer-events: none;
+    }
 
 .display {
   height: 100%;

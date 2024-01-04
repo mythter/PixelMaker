@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MouseService } from '../../shared/services/mouse.service';
 
 @Component({
@@ -7,20 +7,17 @@ import { MouseService } from '../../shared/services/mouse.service';
   styleUrl: './main-window.component.css'
 })
 export class MainWindowComponent implements OnInit {
-  @ViewChild('container', { static: true }) container!: ElementRef<HTMLElement>;
 
-  @HostListener('mousedown', ['$event'])
-  onMouseDown(e: Event) {
-    console.log(e);
+  @HostListener('mousemove', ['$event'])
+  onMouseMove(e: MouseEvent) {
+    this.mouseService.onMove(e);
   }
 
   constructor(private mouseService: MouseService) {
-    mouseService.clickCell$.subscribe(e => {
-      console.log(e);
-    });
+
   }
 
   ngOnInit(): void {
-    console.log(this.container);
+   
   }
 }
