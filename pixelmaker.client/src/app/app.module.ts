@@ -6,20 +6,22 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainWindowComponent } from './main-window/main-window.component';
-import { TopPanelComponent } from './main-window//top-panel/top-panel.component';
-import { LeftPanelComponent } from './main-window//left-panel/left-panel.component';
 import { MouseService } from '../shared/services/mouse.service';
 import { DisplayComponent } from './main-window/display/display.component';
 import { DisplayCellComponent } from './main-window/display/display-cell/display-cell.component';
+import { DisplayService } from '../shared/services/display.service';
+import { CellsService } from '../shared/services/cells.service';
+import { ToolsPanelComponent } from './main-window/tools-panel/tools-panel.component';
+import { ToolButtonComponent } from './main-window/tools-panel/tool-button/tool-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainWindowComponent,
-    TopPanelComponent,
-    LeftPanelComponent,
     DisplayComponent,
     DisplayCellComponent,
+    ToolsPanelComponent,
+    ToolButtonComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -28,7 +30,20 @@ import { DisplayCellComponent } from './main-window/display/display-cell/display
       { path: '', component: MainWindowComponent, pathMatch: 'full' },
     ])
   ],
-  providers: [MouseService],
+  providers: [
+    MouseService,
+    DisplayService,
+    CellsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private mouseService: MouseService) {
+
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    window.addEventListener('mouseup', (e) => {
+      mouseService.onReset();
+    });
+
+  }
+}
