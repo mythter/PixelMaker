@@ -1,10 +1,32 @@
-<div class="cells">
-  <app-display-cell *ngFor="let i of cells"
-                    [value]="i"></app-display-cell>
-</div>
+<div #display class="display"
+     [style.left.px]="position.x"
+     [style.top.px]="position.y"
+     [style.width.px]="mapXSize"
+     [style.height.px]="mapYSize">
+  <div class="decorations back"></div>
+  <div class="decorations back-moving"></div>
 
-<div class="decorations back"></div>
-<div class="blocks">
-  <div></div>
+  <svg class="cells">
+    <g class="horizontal-line">
+      <line *ngFor="let row of rows"
+            [attr.x1]="0"
+            [attr.x2]="mapXSize"
+            [attr.y1]="row"
+            [attr.y2]="row" />
+    </g>
+    <g class="vertical-line">
+      <line *ngFor="let col of columns"
+            [attr.x1]="col"
+            [attr.x2]="col"
+            [attr.y1]="0"
+            [attr.y2]="mapYSize" />
+    </g>
+  </svg>
+
+  <div class="blocks">
+    <app-display-cell *ngFor="let block of blocks"
+                      [block]="block"></app-display-cell>
+  </div>
+
+  <div class="decorations front"></div>
 </div>
-<div class="decorations front"></div>

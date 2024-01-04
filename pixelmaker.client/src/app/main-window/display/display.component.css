@@ -1,14 +1,42 @@
-:host{
-    display: block;
-    width: 100%;
-    height: 100%;
+/*:host {*/
+  /*display: block;*/
+  /*width: 100%;
+  height: 100%;
+}*/
+
+.display {
+  width: 100%;
+  height: 100%;
+  position:absolute;
+}
+
+.back {
+  width: 100%;
+  height: 100%;
+  background: url(/assets/backgrounds/bg1.png);
+  background-size: 100% 100%;
+  pointer-events: none;
 }
 
 .cells {
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
-  flex-wrap: wrap;
-  /*pointer-events: none;*/
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+  .cells line {
+    stroke: #808080;
+    stroke-width: 2px;
+  }
+
+.horizontal-lines {
+  width: 100%;
+  height: 100%;
+}
+
+.blocks {
+    /*pointer-events: none;*/
 }
