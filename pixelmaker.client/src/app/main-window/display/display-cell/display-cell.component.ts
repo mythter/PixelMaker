@@ -10,17 +10,14 @@ import { Block } from '../../../../shared/models/block.model';
 })
 
 export class DisplayCellComponent {
-  //@ViewChild("cell", { static: true }) cell!: ElementRef<HTMLElement>
   @Input() block!: Block;
+
+  onTop: boolean = false;
 
   @HostListener('mousedown', ['$event'])
   onMouseDown(e: MouseEvent) {
-    if (e.button == 0) {
-      this.mouseService.onCellDown({ event: e, cell: this.block });
-    }
-    else if (e.button == 2) {
-      e.preventDefault();
-    }
+    this.onTop = true;
+    this.mouseService.onCellDown({ event: e, cell: this.block });
   }
 
   @HostListener('mousemove', ['$event'])
@@ -30,19 +27,12 @@ export class DisplayCellComponent {
 
   @HostListener('mouseup', ['$event'])
   onMouseUp(e: MouseEvent) {
+    this.onTop = false;
     this.mouseService.onCellUp(e);
   }
 
+  constructor(private mouseService: MouseService) {
 
-  constructor(private mouseService: MouseService,
-    private cellsService: CellsService) {
-
-    cellsService.cellMove$.subscribe(o => {
-      if (o.cell == this.block) {
-        this.block.x = o.position.x;
-        this.block.y = o.position.y;
-      }
-    });
 
   }
 }
