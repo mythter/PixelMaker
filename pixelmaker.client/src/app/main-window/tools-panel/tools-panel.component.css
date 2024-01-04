@@ -1,0 +1,6 @@
+:host {
+  background: #999999cc;
+  border: 3px solid #aaa;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
