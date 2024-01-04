@@ -1,5 +1,8 @@
+import { BlockType } from "../enums/block-type";
+
 export interface Block {
   x: number;
   y: number;
-  type: string;
+  type: BlockType;
+  texture: string;
 }
