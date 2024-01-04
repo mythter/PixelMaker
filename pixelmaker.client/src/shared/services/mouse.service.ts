@@ -55,8 +55,10 @@ export class MouseService {
   }
 
   onCellDown(object: { event: MouseEvent, cell: Block }) {
-    this.moveCell = true;
-    this.downCellSubject.next(object);
+    if (object.event.button == 0) {
+      this.moveCell = true;
+      this.downCellSubject.next(object);
+    }
   }
 
   onCellMove(event: MouseEvent) {

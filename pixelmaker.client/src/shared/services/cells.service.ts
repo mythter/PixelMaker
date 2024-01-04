@@ -19,7 +19,10 @@ export class CellsService {
   private offset: Position = { x: 0, y: 0 };
 
   private cell: Block = { x: 0, y: 0, type: BlockType.None, texture: "" };
-;
+  private oldPosition: Position = { x: 0, y: 0 };
+
+
+  private removeCell: boolean = false;
 
   private createCellSubject = new Subject<Block>();
   createCell$ = this.createCellSubject.asObservable();
@@ -27,8 +30,11 @@ export class CellsService {
   private removeCellSubject = new Subject<Block>();
   removeCell$ = this.removeCellSubject.asObservable();
 
-  private cellMoveSubject = new Subject<{ cell: Block, position: Position }>();
-  cellMove$ = this.cellMoveSubject.asObservable();
+  private moveCellSubject = new Subject<{ cell: Block, position: Position }>();
+  moveCell$ = this.moveCellSubject.asObservable();
+
+  private placeCellSubject = new Subject<{ cell: Block, newPos: Position, oldPos: Position }>();
+  placeCell$ = this.placeCellSubject.asObservable();
 
   constructor(
     private mouseService: MouseService,
@@ -56,13 +62,27 @@ export class CellsService {
       this.offset = {
         x: o.event.offsetX,
         y: o.event.offsetY
-      }
+      };
 
       this.cell = o.cell;
+      this.oldPosition = { x: this.cell.x, y: this.cell.y };
     });
 
     mouseService.removeCell$.subscribe(e => {
 
+    });
+
+    mouseService.moveCell$.subscribe(e => {
+
+      this.position = {
+        x: e.clientX - displayService.position.x - this.offset.x,
+        y: e.clientY - displayService.position.y - this.offset.y
+      };
+
+      this.cell.x = this.position.x;
+      this.cell.y = this.position.y;
+
+      //this.cellMoveSubject.next({ cell: this.cell, position: this.position });
     });
 
     mouseService.upCell$.subscribe(e => {
@@ -78,19 +98,9 @@ export class CellsService {
       this.position = {
         x: x,
         y: y,
-      }
+      };
 
-      this.cellMoveSubject.next({ cell: this.cell, position: this.position });
-    });
-
-    mouseService.moveCell$.subscribe(e => {
-      
-      this.position = {
-        x: e.clientX - displayService.position.x - this.offset.x,
-        y: e.clientY - displayService.position.y - this.offset.y
-      }
-
-      this.cellMoveSubject.next({ cell: this.cell, position: this.position });
+      this.placeCellSubject.next({ cell: this.cell, newPos: this.position, oldPos: this.oldPosition });
     });
   }
 }
