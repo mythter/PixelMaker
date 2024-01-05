@@ -29,6 +29,10 @@
       border-radius: 10px;
     }
 
+    .main .tools .selected {
+      background: #a9a9a9;
+    }
+
 .top-tools-panel {
   /*    height: 110px;
     min-height: 110px;*/

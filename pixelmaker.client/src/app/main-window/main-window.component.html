@@ -23,12 +23,22 @@
 
     <div class="left-tools">
       <app-tools-panel class="left-tools-panel">
-        <app-tool-button class="button"></app-tool-button>
-        <app-tool-button class="button"></app-tool-button>
-        <app-tool-button class="button"></app-tool-button>
-        <app-tool-button class="button"></app-tool-button>
-        <app-tool-button class="button"></app-tool-button>
-        <app-tool-button class="button"></app-tool-button>
+        <app-tool-button class="button"
+                         [class.selected]="tools[0]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#000000" viewBox="0 0 256 256"><path d="M219.31,192a16,16,0,0,1,0,22.63l-4.68,4.68a16,16,0,0,1-22.63,0l-55.25-55.24-21.88,50.34A15.84,15.84,0,0,1,100.26,224l-.78,0a15.82,15.82,0,0,1-14.41-11L32.8,52.92A15.95,15.95,0,0,1,52.92,32.8L213,85.07a16,16,0,0,1,1.41,29.8l-50.34,21.88Z"></path></svg>
+        </app-tool-button>
+        <app-tool-button class="button"
+                         [class.selected]="tools[1]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#000000" viewBox="0 0 256 256"><path d="M225,80.4,183.6,39a24,24,0,0,0-33.94,0L31,157.66a24,24,0,0,0,0,33.94l30.06,30.06A8,8,0,0,0,66.74,224H216a8,8,0,0,0,0-16h-84.7L225,114.34A24,24,0,0,0,225,80.4ZM213.67,103,160,156.69,107.31,104,161,50.34a8,8,0,0,1,11.32,0l41.38,41.38a8,8,0,0,1,0,11.31Z"></path></svg>
+        </app-tool-button>
+        <app-tool-button class="button"
+                         [class.selected]="tools[2]"></app-tool-button>
+        <app-tool-button class="button"
+                         [class.selected]="tools[3]"></app-tool-button>
+        <app-tool-button class="button"
+                         [class.selected]="tools[4]"></app-tool-button>
+        <app-tool-button class="button"
+                         [class.selected]="tools[5]"></app-tool-button>
         <app-tool-button class="button long"></app-tool-button>
         <app-tool-button class="button long"></app-tool-button>
       </app-tools-panel>
