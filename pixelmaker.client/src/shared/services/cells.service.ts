@@ -69,7 +69,7 @@ export class CellsService {
     });
 
     mouseService.removeCell$.subscribe(e => {
-
+      
     });
 
     mouseService.moveCell$.subscribe(e => {
@@ -81,8 +81,6 @@ export class CellsService {
 
       this.cell.x = this.position.x;
       this.cell.y = this.position.y;
-
-      //this.cellMoveSubject.next({ cell: this.cell, position: this.position });
     });
 
     mouseService.upCell$.subscribe(e => {

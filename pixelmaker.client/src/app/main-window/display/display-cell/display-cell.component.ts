@@ -1,6 +1,5 @@
-import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { MouseService } from '../../../../shared/services/mouse.service';
-import { CellsService } from '../../../../shared/services/cells.service';
 import { Block } from '../../../../shared/models/block.model';
 
 @Component({
