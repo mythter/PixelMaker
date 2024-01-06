@@ -15,8 +15,13 @@ export class DisplayCellComponent {
 
   @HostListener('mousedown', ['$event'])
   onMouseDown(e: MouseEvent) {
-    this.onTop = true;
-    this.mouseService.onCellDown({ event: e, cell: this.block });
+    if (e.button == 0) {
+      this.onTop = true;
+      this.mouseService.onCellDown({ event: e, cell: this.block });
+    }
+    else if (e.button == 2) {
+      this.mouseService.onDisplayDown(e);
+    }
   }
 
   @HostListener('mousemove', ['$event'])

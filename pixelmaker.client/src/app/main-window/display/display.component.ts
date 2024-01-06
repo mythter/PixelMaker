@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Block } from '../../../shared/models/block.model';
 import { MouseService } from '../../../shared/services/mouse.service';
 import { DisplayService } from '../../../shared/services/display.service';
@@ -10,7 +10,7 @@ import { CellsService } from '../../../shared/services/cells.service';
   templateUrl: './display.component.html',
   styleUrl: './display.component.css'
 })
-export class DisplayComponent {
+export class DisplayComponent implements OnInit {
   @ViewChild("display", { static: true }) display!: ElementRef<HTMLElement>
 
   rows: number[] = [];
@@ -25,6 +25,7 @@ export class DisplayComponent {
 
   @HostListener('mousedown', ['$event'])
   onMouseDown(e: MouseEvent) {
+    console.log("down");
     if (e.target == this.display.nativeElement) {
       this.mouseService.onDisplayDown(e);
     }
@@ -74,5 +75,8 @@ export class DisplayComponent {
         o.cell.y = o.newPos.y;
       }
     });
+  }
+  ngOnInit(): void {
+    this.displayService.initDisplay(this.display.nativeElement);
   }
 }

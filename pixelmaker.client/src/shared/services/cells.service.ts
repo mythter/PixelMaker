@@ -16,11 +16,10 @@ export class CellsService {
   private readonly mapYSize: number;
 
   private position: Position = { x: 0, y: 0 };
+  private oldPosition: Position = { x: 0, y: 0 };
   private offset: Position = { x: 0, y: 0 };
 
   private cell: Block = { x: 0, y: 0, type: BlockType.None, texture: "" };
-  private oldPosition: Position = { x: 0, y: 0 };
-
 
   private removeCell: boolean = false;
 
@@ -69,7 +68,7 @@ export class CellsService {
     });
 
     mouseService.removeCell$.subscribe(e => {
-      
+
     });
 
     mouseService.moveCell$.subscribe(e => {

@@ -16,6 +16,8 @@ export class DisplayService {
   readonly cellSize: number = 50;
 
   private _position: Position = { x: 0, y: 0 };
+
+  private display!: HTMLElement;
   public get position(): Position {
     return this._position;
   }
@@ -28,6 +30,24 @@ export class DisplayService {
         x: e.offsetX,
         y: e.offsetY
       }
+
+      let element = e.target as HTMLElement;
+      if (element !== this.display) {
+        this.offset.x += element.offsetLeft;
+        this.offset.y += element.offsetTop;
+      }
+
+      //let element = e.target as HTMLElement;
+      //while (element !== this.display) {
+      //  console.log(element);
+
+      //  if (element !== null) {
+      //    this.offset.x += element.offsetLeft;
+      //    this.offset.y += element.offsetTop;
+      //    console.log(this.offset.x, this.offset.y);
+      //  }
+      //  element = element.parentNode as HTMLElement;
+      //}
     });
 
     mouseService.moveDisplay$.subscribe((e) => {
@@ -53,12 +73,16 @@ export class DisplayService {
       else {
         clientY = posY > 0 ? 0 : offY;
       }
-      
+
       this._position = {
         x: clientX,
         y: clientY
       }
       this.displayMoveSubject.next(this._position);
     });
+  }
+
+  initDisplay(display: HTMLElement) {
+    this.display = display;
   }
 }
